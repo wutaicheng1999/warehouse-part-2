@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-function ImageInput(props) {
+function UrlInput(props) {
   const [urls, setUrls] = useState([]);
 
   const handleSubmit = (event) => {
@@ -33,9 +33,9 @@ function ImageInput(props) {
         </div>
       ))}
       <button type="button" onClick={addUrl}>Add another image URL</button>
-      <button type="submit">Extract Text</button>
+      <button type="submit">Extract Text From Images</button>
     </form>
   );
 }
 
-export default ImageInput;
+export default UrlInput;
