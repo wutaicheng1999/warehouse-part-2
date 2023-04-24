@@ -1,4 +1,7 @@
 import React, { useState } from 'react';
+import { TextField, Button, IconButton, Box } from '@material-ui/core';
+import { Delete as DeleteIcon, Add as AddIcon } from '@material-ui/icons';
+
 
 function UrlInput(props) {
   const [urls, setUrls] = useState([]);
@@ -18,23 +21,33 @@ function UrlInput(props) {
     setUrls([...urls, '']);
   };
 
+  const deleteUrl = (index) => {
+    const newUrls = [...urls];
+    newUrls.splice(index, 1);
+    setUrls(newUrls);
+  };
+
   return (
-    <form onSubmit={handleSubmit}>
+    <Box component="form" onSubmit={handleSubmit}>
       {urls.map((url, index) => (
-        <div key={index}>
-          <label>
-            Image URL #{index + 1}:
-            <input
-              type="text"
-              value={url}
-              onChange={(event) => handleUrlChange(event, index)}
-            />
-          </label>
-        </div>
+        <Box key={index} display="flex" alignItems="center">
+          <TextField
+            label={`Image URL #${index + 1}`}
+            value={url}
+            onChange={(event) => handleUrlChange(event, index)}
+          />
+          <IconButton onClick={() => deleteUrl(index)}>
+            <DeleteIcon />
+          </IconButton>
+        </Box>
       ))}
-      <button type="button" onClick={addUrl}>Add another image URL</button>
-      <button type="submit">Extract Text From Images</button>
-    </form>
+      <Button variant="contained" color="primary" onClick={addUrl} startIcon={<AddIcon />}>
+        Add another image URL
+      </Button>
+      <Button type="submit" variant="contained" color="primary">
+        Extract Text From Images
+      </Button>
+    </Box>
   );
 }
 
