@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { TextField, Button, IconButton, Box } from '@material-ui/core';
-import { Delete as DeleteIcon, Add as AddIcon } from '@material-ui/icons';
+import { TextField, Button, IconButton, Box } from '@mui/material';
+import { Delete as DeleteIcon, Add as AddIcon } from '@mui/icons-material';
 
 
 function UrlInput(props) {
